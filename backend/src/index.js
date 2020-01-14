@@ -1,10 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+require('dotenv/config');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://admin:admin@cluster-jwyto.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster-jwyto.mongodb.net/test?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -14,7 +15,7 @@ mongoose.connect('mongodb+srv://admin:admin@cluster-jwyto.mongodb.net/test?retry
 app.use(express.json());
 app.use(routes);
 
-app.listen(3333, () => {
-  console.log('servidor ON')
+app.listen(process.env.APP_PORT, () => {
+  console.log('Servidor funcionando na porta ' + process.env.APP_PORT)
 });
 
