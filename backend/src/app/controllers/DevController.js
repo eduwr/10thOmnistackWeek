@@ -1,13 +1,14 @@
 const parseStringAsArray = require('../utils/parseStringAsArray');
 const pinPointLocation = require('../utils/pinPointLocation');
+const { findConnections, sendMessage } = require('../../websocket')
 const { listDevs,
-        validateUsername,
-        getUserData,
-        createDev,
-        updateDevData,
-        findDevToDelete,
-        deleteDev
-      } = require('../services/DevService')
+  validateUsername,
+  getUserData,
+  createDev,
+  updateDevData,
+  findDevToDelete,
+  deleteDev
+} = require('../services/DevService')
 
 //index, show, store, update, destroy
 
@@ -35,6 +36,15 @@ module.exports = {
         bio,
         techsArray,
         location)
+
+      //filtrar as conexções que estão há no mx 10km de distÂncia e que o novo dev tenha pelo menos uma das techs
+
+      const sendSocketMessageTo = findConnections(
+        { latitude, longitude },
+        techsArray
+      )
+      sendMessage(sendSocketMessageTo, 'newDev', dev)
+
     }
 
     return res.json(dev);
@@ -56,8 +66,8 @@ module.exports = {
     const { id } = req.params;
     const devExists = await findDevToDelete(id)
     const result = devExists ? { message: `O usuário ${devExists.name} foi removido com sucesso!` } : { message: 'Usuário não encontrado!' }
-    
-    if(devExists) {
+
+    if (devExists) {
       await deleteDev(id)
     }
 

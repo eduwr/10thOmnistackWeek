@@ -16,29 +16,30 @@ module.exports = {
 
   async getUserData(github_username) {
     const response = await github.get(`/${github_username}`);
-    
+
     return response;
   },
 
   async createDev(github_username, name, avatar_url, bio, techs, location) {
-      dev = await Dev.create({
-        github_username,
-        name,
-        avatar_url,
-        bio,
-        techs,
-        location
-      })
-      return dev;
-    },
+    const techsLowerCase = techs.map(tech => tech.toLowerCase())
+    dev = await Dev.create({
+      github_username,
+      name,
+      avatar_url,
+      bio,
+      techs: techsLowerCase,
+      location
+    })
+    return dev;
+  },
 
   async updateDevData(id, name, bio, techs, location) {
     //nome avatar bio localização tecnologias
-
+    const techsLowerCase = techs.map(tech => tech.toLowerCase())
     const dev = await Dev.findByIdAndUpdate(id, {
       name,
       bio,
-      techs,
+      techs: techsLowerCase,
       location
     });
 
@@ -48,7 +49,7 @@ module.exports = {
   async findDevToDelete(id) {
     const dev = Dev.findById(id);
     return dev
-},
+  },
 
   async deleteDev(id) {
     await Dev.findByIdAndDelete(id)
