@@ -49,3 +49,7 @@ li.dev-item a:hover {
   color: #999;
   margin: 2px;
 }
+
+#github-btn {
+  color: white;
+}
