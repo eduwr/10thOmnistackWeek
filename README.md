@@ -1,4 +1,4 @@
-# DevRadar (10thOmnistackWeek)
+# DevRadar (Semana Omnistack - Rocketseat)
 DevRadar - Aplicação produzida durante a 10ª Semana Omnistack da Rocketseat
 
 
