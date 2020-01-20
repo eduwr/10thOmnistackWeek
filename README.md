@@ -25,7 +25,7 @@ Inserir o comando a baixo na pasta desejada para salvar o projeto.
 git clone [link do repositório]
 ```
 
-#### Instalando as dependências do backend
+#### Instalar as dependências do backend
 
 No diretório do backend inserir o comando:
 
@@ -33,7 +33,7 @@ No diretório do backend inserir o comando:
 yarn
 ```
 
-#### Conectando ao banco de dados
+#### Conectar ao banco de dados
 
 * Deve-se acessar o [MongoDB](https://www.mongodb.com/) através do site e logar em sua conta.
 * Após configurar o Cluster copiar o link fornecido pelo MongoDB para conexão e substituir no arquivo 'index.js' conforme a baixo.
@@ -47,7 +47,7 @@ mongoose.connect(`Link de conexão com o Mongo`, {
 });
 ```
 
-#### Criando uma variável de ambiente (opcional)
+#### Criar uma variável de ambiente (opcional)
 
 * Com o intuito de proteger seus dados pessoais é recomendado criar uma variável de ambiente conforme modelo do arquivo '.env.exemple'.
 * Incluir suas credenciais de acesso no arquivo e substituir o nome de '.env.exemple' para '.env'.
@@ -59,14 +59,14 @@ require('dotenv/config');
 const minhaVariavelDeAmbiente = process.env.NOME_DA_VARIAVEL
 ```
 
-#### Startando o backend
+#### Iniciar o backend
 No diretório do backend inserir o comando:
 
 ```
 yarn dev
 ```
 
-#### Instalando as dependências da aplicação web
+#### Instalar as dependências da aplicação web
 
 No diretório web inserir o comando:
 
@@ -74,14 +74,14 @@ No diretório web inserir o comando:
 yarn
 ```
 
-#### Startando a aplicação web
+#### Iniciar a aplicação web
 No diretório web inserir o comando:
 
 ```
 yarn start
 ```
 
-#### Instalando as dependências do mobile
+#### Instalar as dependências do mobile
 
 No diretório do mobile inserir o comando:
 
@@ -89,8 +89,8 @@ No diretório do mobile inserir o comando:
 yarn
 ```
 
-#### Startando o app
-**Obs: a aplicação mobile só funcionará no dispositivo móvel com o [Expo](https://expo.io/) instalado.**
+#### Iniciar o app
+*Obs: a aplicação mobile só funcionará no dispositivo móvel com o [Expo](https://expo.io/) instalado.*
 
 No diretório do mobile inserir o comando:
 
